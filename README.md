@@ -9,7 +9,7 @@ python -m venv venv
 ```python
 venv\Scripts\activate.bat
 ```
-- PIP install the requirements.txt
+- Install the required libraries
 ```python
 pip install requirements.txt
 ```
