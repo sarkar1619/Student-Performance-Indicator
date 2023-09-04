@@ -1,14 +1,7 @@
-import pickle
 from flask import Flask, request, render_template
-import pandas as pd
-import numpy as np
-
-from sklearn.preprocessing import StandardScaler
 from src.pipeline.predict_pipeline import CustomData, PredictPipeline
 
-application = Flask(__name__)
-
-app = application
+app = Flask(__name__)
 
 ## Route for a home page
 @app.route('/')
@@ -37,5 +30,6 @@ def predict_datapoint():
 
         return render_template('home.html', results=results[0])
 
+# Debugging
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
