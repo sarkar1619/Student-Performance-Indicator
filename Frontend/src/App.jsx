@@ -3,7 +3,7 @@
 // import viteLogo from "/vite.svg";
 import "./App.css";
 import Navbar from "./components/Navbar";
-import InputForm from "./components/InputForm";
+import InputForm from "./components/PredictTab";
 
 function App() {
     // const [count, setCount] = useState(0);

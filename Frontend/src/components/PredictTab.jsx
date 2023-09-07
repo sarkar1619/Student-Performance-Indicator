@@ -3,21 +3,26 @@ function InputForm() {
         <div className="flex items-center justify-center h-auto pt-5">
             <div className="w-full max-w-md">
                 <form
-                    className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+                    className="bg-slate-200 shadow-md rounded px-8 pt-6 pb-6 mb-4"
                     action="{{url_for('predict_datapoint')}}"
                     method="post"
                 >
+                    {/* 1. Gender */}
                     <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-bold mb-2">
+                        <label
+                            className="block text-gray-700 text-sm font-bold mb-2"
+                            htmlFor="gender"
+                        >
                             Gender
                         </label>
                         <select
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline cursor-pointer focus:border-slate-800 hover:border-slate-800"
+                            id="gender"
                             name="gender"
                             placeholder="Enter you Gender"
                             required
                         >
-                            <option selected disabled value="">
+                            <option selected disabled hidden value="">
                                 -- Select your gender --
                             </option>
                             <option value="male">Male</option>
@@ -25,12 +30,17 @@ function InputForm() {
                         </select>
                     </div>
 
+                    {/* 2. Race/Ethnicity */}
                     <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-bold mb-2">
+                        <label
+                            className="block text-gray-700 text-sm font-bold mb-2"
+                            htmlFor="race_ethnicity"
+                        >
                             Race/Ethnicity
                         </label>
                         <select
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline cursor-pointer focus:border-slate-800 hover:border-slate-800"
+                            id="race_ethnicity"
                             name="race_ethnicity"
                             placeholder="Enter you ethnicity"
                             required
@@ -39,6 +49,7 @@ function InputForm() {
                                 className="placeholder"
                                 selected
                                 disabled
+                                hidden
                                 value=""
                             >
                                 -- Select your ethnicity --
@@ -50,12 +61,18 @@ function InputForm() {
                             <option value="group E">Group E</option>
                         </select>
                     </div>
+
+                    {/* 3. Parental Level of Education */}
                     <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-bold mb-2">
+                        <label
+                            className="block text-gray-700 text-sm font-bold mb-2"
+                            htmlFor="parental_level_of_education"
+                        >
                             Parental Level of Education
                         </label>
                         <select
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline cursor-pointer focus:border-slate-800 hover:border-slate-800"
+                            id="parental_level_of_education"
                             name="parental_level_of_education"
                             placeholder="Enter you Parent Education"
                             required
@@ -64,6 +81,7 @@ function InputForm() {
                                 className="placeholder"
                                 selected
                                 disabled
+                                hidden
                                 value=""
                             >
                                 -- Select parental education --
@@ -84,12 +102,18 @@ function InputForm() {
                             </option>
                         </select>
                     </div>
+
+                    {/* 4. Lunch Type */}
                     <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-bold mb-2">
+                        <label
+                            className="block text-gray-700 text-sm font-bold mb-2"
+                            htmlFor="lunch"
+                        >
                             Lunch Type
                         </label>
                         <select
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline cursor-pointer focus:border-slate-800 hover:border-slate-800"
+                            id="lunch"
                             name="lunch"
                             placeholder="Enter you Lunch"
                             required
@@ -98,6 +122,7 @@ function InputForm() {
                                 className="placeholder"
                                 selected
                                 disabled
+                                hidden
                                 value=""
                             >
                                 -- Select lunch type --
@@ -106,12 +131,18 @@ function InputForm() {
                             <option value="standard">Standard</option>
                         </select>
                     </div>
+
+                    {/* 5. Test Preparation Course */}
                     <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-bold mb-2">
+                        <label
+                            className="block text-gray-700 text-sm font-bold mb-2"
+                            htmlFor="test_preparation_course"
+                        >
                             Test preparation Course
                         </label>
                         <select
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline cursor-pointer focus:border-slate-800 hover:border-slate-800"
+                            id="test_preparation_course"
                             name="test_preparation_course"
                             placeholder="Enter you Course"
                             required
@@ -120,6 +151,7 @@ function InputForm() {
                                 className="placeholder"
                                 selected
                                 disabled
+                                hidden
                                 value=""
                             >
                                 -- Select test course --
@@ -128,80 +160,69 @@ function InputForm() {
                             <option value="completed">Completed</option>
                         </select>
                     </div>
+
+                    {/* 6. Writing Score */}
                     <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-bold mb-2">
+                        <label
+                            className="block text-gray-700 text-sm font-bold mb-2"
+                            htmlFor="writing_score"
+                        >
                             Writing Score (out of 100)
                         </label>
                         <input
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline cursor-pointer focus:border-slate-800 hover:border-slate-800"
                             type="number"
+                            id="writing_score"
                             name="writing_score"
                             placeholder="Enter your Writing Score"
                             min="0"
                             max="100"
                         />
                     </div>
+
+                    {/* 7. Reading Score */}
                     <div className="mb-6">
-                        <label className="block text-gray-700 text-sm font-bold mb-2">
+                        <label
+                            className="block text-gray-700 text-sm font-bold mb-2"
+                            htmlFor="reading_score"
+                        >
                             Reading Score (out of 100)
                         </label>
                         <input
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline cursor-pointer focus:border-slate-800 hover:border-slate-800"
                             type="number"
+                            id="reading_score"
                             name="reading_score"
                             placeholder="Enter your Reading Score"
                             min="0"
                             max="100"
                         />
                     </div>
-                    <div className="">
+
+                    {/* Submit Button: (Predict Score) */}
+                    <div className="flex items-center justify-between">
                         <input
-                            className="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                            className="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded cursor-pointer focus:outline-none focus:shadow-outline"
                             type="submit"
                             value="Predict Score"
                             required
                         />
-                    </div>
-                    {/* <div className="mb-4">
-                        <label
-                            className="block text-gray-700 text-sm font-bold mb-2"
-                            htmlFor="username"
-                        >
-                            Username
-                        </label>
                         <input
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            id="username"
-                            type="text"
-                            placeholder="Username"
+                            className="inline-block align-baseline font-bold text-base pr-3 text-blue-500 hover:text-blue-800"
+                            href="#"
+                            type="reset"
+                            value="Reset"
                         />
                     </div>
-                    <div className="mb-6">
-                        <label
-                            className="block text-gray-700 text-sm font-bold mb-2"
-                            htmlFor="password"
-                        >
-                            Password
-                        </label>
-                        <input
-                            className="shadow appearance-none border hover:border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                            id="password"
-                            type="password"
-                            placeholder="******************"
-                        /> */}
-                        {/* <p className="text-red-500 text-xs italic">
-                            Please choose a password.
-                        </p> */}
-                    {/* </div>
-                    <div className="flex items-center justify-between">
+                    {/* <div className="flex items-center justify-between">
                         <button
-                            className="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                             type="button"
                         >
                             Sign In
                         </button>
                         <a
-                            className="inline-block align-baseline font-bold text-sm text-teal-400 hover:text-teal-600"
+                            className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
                             href="#"
                         >
                             Forgot Password?
