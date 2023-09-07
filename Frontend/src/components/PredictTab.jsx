@@ -170,7 +170,7 @@ function InputForm() {
                             Writing Score (out of 100)
                         </label>
                         <input
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline cursor-pointer focus:border-slate-800 hover:border-slate-800"
+                            className="shadow [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline cursor-pointer focus:border-slate-800 hover:border-slate-800"
                             type="number"
                             id="writing_score"
                             name="writing_score"
@@ -189,7 +189,7 @@ function InputForm() {
                             Reading Score (out of 100)
                         </label>
                         <input
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline cursor-pointer focus:border-slate-800 hover:border-slate-800"
+                            className="shadow [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline cursor-pointer focus:border-slate-800 hover:border-slate-800"
                             type="number"
                             id="reading_score"
                             name="reading_score"
