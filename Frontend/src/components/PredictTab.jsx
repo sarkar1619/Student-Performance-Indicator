@@ -3,13 +3,41 @@ import Modal from "./Modal";
 
 const PredictTab = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [genderStatus, setGenderStatus] = useState("");
+    const [raceStatus, setRaceStatus] = useState("");
+    const [parentalStatus, setParentalStatus] = useState("");
+    const [lunchStatus, setLunchStatus] = useState("");
+    const [testCourseStatus, setTestCourseStatus] = useState("");
+    const [writingStatus, setWritingStatus] = useState("");
+    const [readingStatus, setReadingStatus] = useState("");
+
+    const handleWritingScoreChange = e => {
+        setWritingStatus(e.target.value)
+    }
+
+    const handleReadingScoreChange = e => {
+        setReadingStatus(e.target.value)
+    }
+
+    const resetForm = () => {
+        setGenderStatus("");
+        setRaceStatus("");
+        setParentalStatus("");
+        setLunchStatus("");
+        setTestCourseStatus("");
+        setWritingStatus("");
+        setReadingStatus("");
+    };
+
     return (
         <>
-            <div className={`flex items-center justify-center h-auto pt-5 ${isModalOpen && "blur-sm"}`}>
+            <div
+                className={`flex items-center justify-center h-auto pt-5 ${
+                    isModalOpen && "blur-sm"
+                }`}
+            >
                 <div className="w-full max-w-md">
-                    <form
-                        className="bg-slate-200 shadow-md rounded px-8 pt-6 pb-6 mb-4"
-                    >
+                    <form className="bg-slate-200 shadow-md rounded px-8 pt-6 pb-6 mb-4">
                         {/* 1. Gender */}
                         <div className="mb-4">
                             <label
@@ -24,8 +52,12 @@ const PredictTab = () => {
                                 name="gender"
                                 placeholder="Enter you Gender"
                                 required
+                                value={genderStatus}
+                                onChange={(e) =>
+                                    setGenderStatus(e.target.value)
+                                }
                             >
-                                <option selected disabled hidden value="">
+                                <option disabled hidden value="">
                                     -- Select your gender --
                                 </option>
                                 <option value="male">Male</option>
@@ -47,10 +79,11 @@ const PredictTab = () => {
                                 name="race_ethnicity"
                                 placeholder="Enter you ethnicity"
                                 required
+                                value={raceStatus}
+                                onChange={(e) => setRaceStatus(e.target.value)}
                             >
                                 <option
                                     className="placeholder"
-                                    selected
                                     disabled
                                     hidden
                                     value=""
@@ -79,10 +112,13 @@ const PredictTab = () => {
                                 name="parental_level_of_education"
                                 placeholder="Enter you Parent Education"
                                 required
+                                value={parentalStatus}
+                                onChange={(e) =>
+                                    setParentalStatus(e.target.value)
+                                }
                             >
                                 <option
                                     className="placeholder"
-                                    selected
                                     disabled
                                     hidden
                                     value=""
@@ -120,12 +156,12 @@ const PredictTab = () => {
                                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline cursor-pointer focus:border-slate-800 hover:border-slate-800"
                                 id="lunch"
                                 name="lunch"
-                                placeholder="Enter you Lunch"
-                                required
+                                placeholder="Enter your Lunch"
+                                value={lunchStatus}
+                                onChange={(e) => setLunchStatus(e.target.value)}
                             >
                                 <option
                                     className="placeholder"
-                                    selected
                                     disabled
                                     hidden
                                     value=""
@@ -145,7 +181,7 @@ const PredictTab = () => {
                                 className="block text-gray-700 text-sm font-bold mb-2"
                                 htmlFor="test_preparation_course"
                             >
-                                Test preparation Course
+                                Test Preparation Course
                             </label>
                             <select
                                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline cursor-pointer focus:border-slate-800 hover:border-slate-800"
@@ -153,10 +189,13 @@ const PredictTab = () => {
                                 name="test_preparation_course"
                                 placeholder="Enter you Course"
                                 required
+                                value={testCourseStatus}
+                                onChange={(e) =>
+                                    setTestCourseStatus(e.target.value)
+                                }
                             >
                                 <option
                                     className="placeholder"
-                                    selected
                                     disabled
                                     hidden
                                     value=""
@@ -184,6 +223,8 @@ const PredictTab = () => {
                                 placeholder="Enter your Writing Score"
                                 min="0"
                                 max="100"
+                                value={writingStatus}
+                                onChange={handleWritingScoreChange}
                             />
                         </div>
 
@@ -203,6 +244,8 @@ const PredictTab = () => {
                                 placeholder="Enter your Reading Score"
                                 min="0"
                                 max="100"
+                                value={readingStatus}
+                                onChange={handleReadingScoreChange}
                             />
                         </div>
 
@@ -217,17 +260,31 @@ const PredictTab = () => {
                             >
                                 Predict Score
                             </button>
-                            <button className="inline-block align-baseline font-bold text-base pr-3 text-blue-500 hover:text-blue-800">
+                            <button
+                                className="inline-block align-baseline font-bold text-base pr-3 text-blue-500 hover:text-blue-800"
+                                onClick={() => resetForm()}
+                            >
                                 Reset
                             </button>
+                            {/* <input
+                                className="inline-block align-baseline font-bold text-base pr-3 text-blue-500 hover:text-blue-800"
+                                type="reset"
+                                value="Reset"
+                                onClick={() => resetForm()}
+                            /> */}
                         </div>
                     </form>
                     <p className="text-center text-gray-500 text-xs">
-                        &copy;2020 Acme Corp. All rights reserved.
+                        &copy;2023 Sarkar. All rights reserved.
                     </p>
                 </div>
             </div>
-            {isModalOpen ? <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} /> : null}
+            {isModalOpen && (
+                <Modal
+                    isModalOpen={isModalOpen}
+                    setIsModalOpen={setIsModalOpen}
+                />
+            )}
         </>
     );
 };
