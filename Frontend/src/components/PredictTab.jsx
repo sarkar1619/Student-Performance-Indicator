@@ -3,36 +3,32 @@ import Modal from "./Modal";
 
 const PredictTab = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [genderStatus, setGenderStatus] = useState("");
-    const [raceStatus, setRaceStatus] = useState("");
-    const [parentalStatus, setParentalStatus] = useState("");
-    const [lunchStatus, setLunchStatus] = useState("");
-    const [testCourseStatus, setTestCourseStatus] = useState("");
-    const [writingStatus, setWritingStatus] = useState("");
-    const [readingStatus, setReadingStatus] = useState("");
 
-    const handleWritingScoreChange = e => {
-        setWritingStatus(e.target.value)
-    }
-
-    const handleReadingScoreChange = e => {
-        setReadingStatus(e.target.value)
-    }
-
-    const resetForm = () => {
-        setGenderStatus("");
-        setRaceStatus("");
-        setParentalStatus("");
-        setLunchStatus("");
-        setTestCourseStatus("");
-        setWritingStatus("");
-        setReadingStatus("");
+    const initialStage = {
+        gender: "",
+        race_ethnicity: "",
+        parental_level_of_education: "",
+        lunch: "",
+        test_preparation_course: "",
+        writing_score: "",
+        reading_score: "",
     };
+
+    const [formData, setFormData] = useState(initialStage);
+
+    const handleFormDataChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value,
+        });
+    };
+
+    const resetForm = () => setFormData(initialStage);
 
     return (
         <>
             <div
-                className={`flex items-center justify-center h-auto pt-5 ${
+                className={`flex items-center justify-center h-auto pt-10 ${
                     isModalOpen && "blur-sm"
                 }`}
             >
@@ -52,10 +48,8 @@ const PredictTab = () => {
                                 name="gender"
                                 placeholder="Enter you Gender"
                                 required
-                                value={genderStatus}
-                                onChange={(e) =>
-                                    setGenderStatus(e.target.value)
-                                }
+                                value={formData.gender}
+                                onChange={handleFormDataChange}
                             >
                                 <option disabled hidden value="">
                                     -- Select your gender --
@@ -79,8 +73,8 @@ const PredictTab = () => {
                                 name="race_ethnicity"
                                 placeholder="Enter you ethnicity"
                                 required
-                                value={raceStatus}
-                                onChange={(e) => setRaceStatus(e.target.value)}
+                                value={formData.race_ethnicity}
+                                onChange={handleFormDataChange}
                             >
                                 <option
                                     className="placeholder"
@@ -112,10 +106,8 @@ const PredictTab = () => {
                                 name="parental_level_of_education"
                                 placeholder="Enter you Parent Education"
                                 required
-                                value={parentalStatus}
-                                onChange={(e) =>
-                                    setParentalStatus(e.target.value)
-                                }
+                                value={formData.parental_level_of_education}
+                                onChange={handleFormDataChange}
                             >
                                 <option
                                     className="placeholder"
@@ -157,8 +149,8 @@ const PredictTab = () => {
                                 id="lunch"
                                 name="lunch"
                                 placeholder="Enter your Lunch"
-                                value={lunchStatus}
-                                onChange={(e) => setLunchStatus(e.target.value)}
+                                value={formData.lunch}
+                                onChange={handleFormDataChange}
                             >
                                 <option
                                     className="placeholder"
@@ -189,10 +181,8 @@ const PredictTab = () => {
                                 name="test_preparation_course"
                                 placeholder="Enter you Course"
                                 required
-                                value={testCourseStatus}
-                                onChange={(e) =>
-                                    setTestCourseStatus(e.target.value)
-                                }
+                                value={formData.test_preparation_course}
+                                onChange={handleFormDataChange}
                             >
                                 <option
                                     className="placeholder"
@@ -223,8 +213,8 @@ const PredictTab = () => {
                                 placeholder="Enter your Writing Score"
                                 min="0"
                                 max="100"
-                                value={writingStatus}
-                                onChange={handleWritingScoreChange}
+                                value={formData.writing_score}
+                                onChange={handleFormDataChange}
                             />
                         </div>
 
@@ -244,8 +234,8 @@ const PredictTab = () => {
                                 placeholder="Enter your Reading Score"
                                 min="0"
                                 max="100"
-                                value={readingStatus}
-                                onChange={handleReadingScoreChange}
+                                value={formData.reading_score}
+                                onChange={handleFormDataChange}
                             />
                         </div>
 
@@ -255,6 +245,7 @@ const PredictTab = () => {
                                 className="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded cursor-pointer focus:outline-none focus:shadow-outline"
                                 onClick={() => {
                                     setIsModalOpen(true);
+                                    console.log(formData);
                                 }}
                                 type="button"
                             >
@@ -262,6 +253,7 @@ const PredictTab = () => {
                             </button>
                             <button
                                 className="inline-block align-baseline font-bold text-base pr-3 text-blue-500 hover:text-blue-800"
+                                type="button"
                                 onClick={() => resetForm()}
                             >
                                 Reset
@@ -274,7 +266,7 @@ const PredictTab = () => {
                             /> */}
                         </div>
                     </form>
-                    <p className="text-center text-gray-500 text-xs">
+                    <p className="text-center text-gray-900 text-xs">
                         &copy;2023 Sarkar. All rights reserved.
                     </p>
                 </div>

@@ -4,11 +4,10 @@ import PredictTab from "./components/PredictTab";
 
 const App = () => {
     return (
-        <>
+        <div className="bg h-screen">
             <Navbar />
             <PredictTab />
-            {/* <Modal /> */}
-        </>
+        </div>
     );
 }
 

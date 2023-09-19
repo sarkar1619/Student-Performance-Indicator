@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template
 from src.pipeline.predict_pipeline import CustomData, PredictPipeline
+from src.pipeline.train_pipeline import TrainPipeline
 
 app = Flask(__name__)
 
@@ -8,7 +9,7 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/predictdata', methods = ['GET', 'POST'])
+@app.route('/predict_data', methods = ['GET', 'POST'])
 def predict_datapoint():
     if request.method == 'GET':
         return render_template('home.html')
@@ -23,12 +24,17 @@ def predict_datapoint():
             writing_score = request.form.get('writing_score')
         )
         pred_df = data.get_data_as_data_frame()
-        print(pred_df)
-
+        
         predict_pipeline = PredictPipeline()
         results = predict_pipeline.predict(pred_df)
-
-        return render_template('home.html', results=results[0])
+        
+        return str(results[0])
+    
+@app.route('/train_data')
+def train_datapoint():
+    train_pipeline = TrainPipeline()
+    train_pipeline.train()
+    return "OK"
 
 # Debugging
 if __name__ == '__main__':

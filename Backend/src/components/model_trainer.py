@@ -116,9 +116,9 @@ class ModelTrainer:
 
             predicted = best_model.predict(X_test)
             r2_square = r2_score(y_test, predicted)
-            logging.info('Prediction done')
+            logging.info(f'Prediction done with R2 Square : {r2_square}')
 
-            return r2_square
+            # return r2_square
 
         except Exception as e:
             raise CustomException(e, sys)
